@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<!-- Cabeçalho -->
+<h:head>
+	<title>Sistema E-Commerce Projeção - versão 1.0.0</title>
+	<style>
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+
+.ui-widget {
+	font-size: 12px !important;
+}
+
+.companyHeaderGrid td {
+	border: none;
+}
+
+#bkTitulo {
+	height: 53px;
+	border: none;
+	background: #f6f6f6
+		url("#{resource['primefaces-ui-lightness:images/ui-bg_glass_100_f6f6f6_1x400.png']}"
+		") 50% 50% repeat-x;
+	background-repeat: repeat;
+}
+
+.ui-clock {
+	padding: 0px 0px;
+	border-radius: 0px !important;
+	border: none !important;
+	background: none !important;
+	color: #000000;
+	font-weight: normal !important;
+}
+
+.ui-panel-grid {
+	border: none !important;
+}
+</style>
+</h:head>
+
+<h:body id="corpobase">
+	<p:layout fullPage="true">
+		<!-- Área topo -->
+		<p:layoutUnit position="north" size="140" resizable="false"
+			closable="false" collapsible="true">
+			<p:panelGrid border="0" styleClass="ui-widget-header ui-corner-all"
+				style="width:100%; border:none;">
+				<p:row>
+					<p:column style="border:none;">
+						<h:graphicImage height="40" width="40"
+							value="#{resource['imagens:ecommerce-icon_small.png']}" />
+						<h:outputLabel id="tituloAplicacao" for="Titulo da Aplicação"
+							value="Sistema E-Commerce Projeção"
+							style="font-family: calibri; font-size:30px; position:relative; top:-5px;" />
+						  &nbsp;&nbsp;&nbsp; 
+					      <h:outputLabel id="tituloVersao" for="versão 1.0.0"
+							value="versão 1.0.0"
+							style="font-family: calibri; font-size:15px;" />
+					</p:column>
+					<p:column style="width:19%; text-align:right;border:none;">
+						<p:clock pattern="dd/MM/yyyy HH:mm:ss" />
+					</p:column>
+					<p:column style="width:18%; text-align:right;border:none;">
+						<h:graphicImage value="#{resource['imagens:logo-projecao3.png']}" />
+								<span style="position: relative; top: +7px;"> <span
+									style="position: relative; top: -6px;"><b>Temas:</b>&nbsp;&nbsp;</span>
+									<p:themeSwitcher>
+										<f:selectItem itemLabel="bootstrap (padrão)"
+											itemValue="bootstrap" />
+										<f:selectItem itemLabel="afterdark" itemValue="afterdark" />
+										<f:selectItem itemLabel="afternoon" itemValue="afternoon" />
+										<f:selectItem itemLabel="afterwork" itemValue="afterwork" />
+										<f:selectItem itemLabel="aristo" itemValue="aristo" />
+										<f:selectItem itemLabel="black-tie" itemValue="black-tie" />
+										<f:selectItem itemLabel="blitzer" itemValue="blitzer" />
+										<f:selectItem itemLabel="blueSky" itemValue="bluesky" />
+										<f:selectItem itemLabel="casablanca" itemValue="casablanca" />
+										<f:selectItem itemLabel="cruze" itemValue="cruze" />
+										<f:selectItem itemLabel="cupertino" itemValue="cupertino" />
+										<f:selectItem itemLabel="dark-hive" itemValue="dark-hive" />
+										<f:selectItem itemLabel="delta" itemValue="delta" />
+										<f:selectItem itemLabel="dot-luv" itemValue="dot-luv" />
+										<f:selectItem itemLabel="eggplant" itemValue="eggplant" />
+										<f:selectItem itemLabel="excite-bike" itemValue="excite-bike" />
+										<f:selectItem itemLabel="flick" itemValue="flick" />
+										<f:selectItem itemLabel="glass-x" itemValue="glass-x" />
+										<f:selectItem itemLabel="home" itemValue="home" />
+										<f:selectItem itemLabel="hot-sneaks" itemValue="hot-sneaks" />
+										<f:selectItem itemLabel="humanity" itemValue="humanity" />
+										<f:selectItem itemLabel="le-frog" itemValue="le-frog" />
+										<f:selectItem itemLabel="midnight" itemValue="midnight" />
+										<f:selectItem itemLabel="mint-choc" itemValue="mint-choc" />
+										<f:selectItem itemLabel="overcast" itemValue="overcast" />
+										<f:selectItem itemLabel="pepper-grinder"
+											itemValue="pepper-grinder" />
+										<f:selectItem itemLabel="redmond" itemValue="redmond" />
+										<f:selectItem itemLabel="rocket" itemValue="rocket" />
+										<f:selectItem itemLabel="sam" itemValue="sam" />
+										<f:selectItem itemLabel="smoothness" itemValue="smoothness" />
+										<f:selectItem itemLabel="south-street"
+											itemValue="south-street" />
+										<f:selectItem itemLabel="start" itemValue="start" />
+										<f:selectItem itemLabel="sunny" itemValue="sunny" />
+										<f:selectItem itemLabel="swanky-purse"
+											itemValue="swanky-purse" />
+										<f:selectItem itemLabel="trontastic" itemValue="trontastic" />
+										<f:selectItem itemLabel="ui-darkness" itemValue="ui-darkness" />
+										<f:selectItem itemLabel="ui-lightness"
+											itemValue="ui-lightness" />
+										<f:selectItem itemLabel="vader" itemValue="vader" />
+
+										<!-- a troca será realizada via ajax -->
+									</p:themeSwitcher>
+								</span>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+
+		<!-- Área do menu -->
+			<h:form>
+				<p:growl id="messages" />
+
+				<p:menubar style="width:99.5%;" >
+					<p:submenu label="Administração" icon="ui-icon-document"
+						rendered="true" >
+						<p:submenu label="Manter" icon="ui-icon-contact" >
+							<p:menuitem value="Tipo Produto" icon="ui-icon-note" 
+								action="/visao/cruds/funcao?faces-redirect=true" />
+							<p:menuitem value="Categoria Produto" icon="ui-icon-note" url="#" />
+							<p:menuitem value="SubCategoria Prod." icon="ui-icon-person" url="#" />
+							<p:menuitem value="Produto" icon="ui-icon-person" url="#" />
+						</p:submenu>
+						<p:separator />
+						<p:submenu label="Cliente" icon="ui-icon-person" style="width:180px">
+							<p:menuitem value="Manter Cliente" icon="ui-icon-note" url="#" />
+							<p:menuitem value="Histórico de Compras" icon="ui-icon-note" url="#" />
+						</p:submenu>
+					</p:submenu>
+
+					<p:submenu label="Professor" icon="ui-icon-bookmark"
+						rendered="true">
+						<p:submenu label="Manter" icon="ui-icon-contact">
+							<p:menuitem value="Prova" url="#" icon="ui-icon-document" />
+							<p:menuitem value="Classificação" url="#" icon="ui-icon-search" />
+							<p:menuitem value="Tipo de Questões" url="#"
+								icon="ui-icon-pencil" />
+							<p:menuitem value="Questões" url="#" icon="ui-icon-extlink" />
+							<p:menuitem value="Ítens de Questões" url="#"
+								icon="ui-icon-extlink" />
+							<p:menuitem value="Respostas" url="#" icon="ui-icon-extlink" />
+						</p:submenu>
+						<p:separator />
+						<p:menuitem value="Liberar Prova" url="#" icon="ui-icon-check" />
+					</p:submenu>
+
+					<p:submenu label="Coordenação" icon="ui-icon-contact"
+						rendered="true">
+						<p:menuitem value="Dashboard" icon="ui-icon-signal"
+							action="dashboard?faces-redirect=true" />
+						<p:separator />
+						<p:submenu label="Relatórios" icon="ui-icon-contact">
+							<p:menuitem value="Provas Realizadas" url="#"
+								icon="ui-icon-document" />
+							<p:menuitem value="Evolução Docente" url="#"
+								icon="ui-icon-document" />
+						</p:submenu>
+					</p:submenu>
+
+					<p:submenu label="Ajuda" icon="ui-icon-help">
+						<p:menuitem value="onLine" url="#" icon="ui-icon-search" />
+						<p:menuitem value="Sobre" url="#" icon="ui-icon-contact"
+							onclick="PF('dlg2').show();" />
+					</p:submenu>
+
+					<p:menuitem value="Sair" url="#" icon="ui-icon-close" />
+
+					<f:facet name="options">
+						<p:commandButton type="button" value="Logout"
+							icon="ui-icon-extlink" rendered="true" />
+					</f:facet>
+				</p:menubar>
+
+		<!-- Toolbar -->
+				<p:toolbar style="height:32px;">
+		                 
+				        <p:toolbarGroup align="left"
+						style="position:relative; top:04px;">
+						<span><b>Departamentos:</b>&nbsp;&nbsp;</span>
+						<span class="ui-separator"> <span
+							class="ui-icon ui-icon-grip-dotted-vertical" />
+						</span>
+						
+						<p:commandButton type="button" value="Eletrônicos"
+							icon="ui-icon-document" />
+						<p:commandButton type="button" value="Eletrodomésticos"
+							icon="ui-icon-document" />
+						<p:commandButton type="button" value="Informática"
+							icon="ui-icon-document" />
+						<p:commandButton type="button" value="Telefonia"
+							icon="ui-icon-document" />
+						<p:commandButton type="button" value="Esporte/Lazer"
+							icon="ui-icon-document" />
+						<p:commandButton type="button" value="Bebês e Crianças"
+							icon="ui-icon-document" />
+						<p:commandButton type="button" value="Eletroportáteis"
+							icon="ui-icon-document" />
+						<p:commandButton type="button" value="Beleza e Saúde"
+							icon="ui-icon-document" />
+
+						<span class="ui-separator"> <span
+							class="ui-icon ui-icon-grip-dotted-vertical" />
+						</span>
+					</p:toolbarGroup>
+				</p:toolbar>
+			</h:form>
+
+		</p:layoutUnit>
+
+		<!-- Área Esquerda -->
+		<p:layoutUnit position="west" width="300" header="Administração"
+			maxSize="300" minSize="300" resizable="true" closable="true"
+			collapsible="true" rendered="true">
+			<h:form id="test" rendered="${loginBean.isLogado()}">
+				<p:panelGrid border="0" style="width:100%; border:none;">
+					<p:row>
+						<p:column style="width:10%;">
+							<h:graphicImage value="#{resource['imagens:icon_usuario.png']}" />
+						</p:column>
+						<p:column style="width:90%;">
+							<h:outputLabel for="lbl_usuario" value="Usuário: " />
+							<h:outputLabel for="usu_nome" value="#{loginBean.usuario.nome}"
+								style="font-weight:bold; color:#0000B3;" />
+							<br></br>
+							<h:outputLabel for="lbl_funcao" value="Função: " />
+							<h:outputLabel for="funcao" value="Professor"
+								style="font-weight:bold;" />
+							<br></br>
+
+							<h:outputLabel for="lbl_ult_acesso" value="Último acesso: " />
+							<h:outputLabel value="${loginBean.usuario.dataUltimoAcesso.time}"
+								for="usu_data_ultimo_acesso" style="color:#910000;">
+								<f:convertDateTime locale="pt_BR" dateStyle="long"
+									pattern="dd/MM/yyyy HH:mm" />
+							</h:outputLabel>
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+				<br></br>
+				<center>
+					<p:calendar mode="inline" id="inlineCalendario" />
+				</center>
+			</h:form>
+		</p:layoutUnit>
+
+		<!-- Corpo -->
+		<p:layoutUnit position="center">
+			<div id="conteudo">
+				<ui:insert name="corpo">
+					<center>
+						<h2>Conteúdo do corpo da aplicaçao.</h2>
+					</center>
+				</ui:insert>
+			</div>
+		</p:layoutUnit>
+
+		<!-- Área Rodapé -->
+		<p:layoutUnit position="south" size="30" resizable="false"
+			closable="false" collapsible="true"
+			styleClass="ui-widget-header ui-corner-all">
+			<center style="position:relative; top:+4px;">Copyright 2014. Todos os Direitos reservados ao
+				Professor Alexandre Soares de Almeida e Turma de LTPIII.</center>
+		</p:layoutUnit>
+	</p:layout>
+
+	<!-- Caixas de Dialogos -->
+	<p:dialog header="Sobre" widgetVar="dlg2" modal="true" height="230"
+		width="450" resizable="false">
+		<h:outputText value="Projeto Acadêmico"
+			style="width:100%; text-align:center;" />
+		<h:form id="test2">
+			<p:panelGrid>
+				<p:row>
+					<p:column style="width:10%; border: none;">
+						<h:graphicImage
+							value="#{resource['imagens:ecommerce-icon_small.png']}" />
+					</p:column>
+					<p:column style="width:90%;">
+						<h:outputLabel value="Sistema E-Commerce"
+							style="font-height:bold;" />
+						<br></br>
+						<h:outputLabel value="Versão 1.0.0" />
+						<br></br>
+						<h:outputLabel value="Data: 08/03/2015" />
+						<br></br>
+						<h:outputLabel value="Por: Professor Alexandre" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="2" style="text-align:right;">
+						<p:commandButton value="Fechar" onclick="PF('dlg2').hide();"
+							type="button" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+
+		</h:form>
+	</p:dialog>
+
+	<ui:insert name="msg_local">
+			&nbsp;
+		</ui:insert>
+</h:body>
+</html>
